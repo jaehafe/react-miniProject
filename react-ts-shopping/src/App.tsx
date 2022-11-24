@@ -28,7 +28,7 @@ const getProducts = async (): Promise<CartItemType[]> => {
   return data;
 };
 
-const App = () => {
+const App: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
 
@@ -38,9 +38,12 @@ const App = () => {
     error,
   } = useQuery<CartItemType[]>(['products'], getProducts);
 
+  //total
   const getTotalItems = (items: CartItemType[]): number => {
     return items.reduce((acc: number, item) => acc + item.amount, 0);
   };
+
+  // add
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
       // 1. 아이템이 카트에 이미 있는지?
@@ -57,6 +60,8 @@ const App = () => {
       return [...prev, { ...clickedItem, amount: 1 }];
     });
   };
+
+  // remove
   const handleRemoveFromCart = (id: number) => {
     setCartItems((prev) =>
       prev.reduce((acc, item) => {
