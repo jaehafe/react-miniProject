@@ -7,14 +7,14 @@ const useOutsideClick = (ref: any, callback: any) => {
         callback();
       }
     };
-    // document.addEventListener('click', handleClick);
-    document.addEventListener('mousedown', handleClick);
-    document.addEventListener('touchstart', handleClick);
+    // document.body.addEventListener('click', handleClick);
+    document.body.addEventListener('mousedown', handleClick);
+    // document.addEventListener('touchstart', handleClick);
 
     return () => {
-      // document.addEventListener('click', handleClick);
-      document.removeEventListener('mousedown', handleClick);
-      document.removeEventListener('touchstart', handleClick);
+      // document.body.addEventListener('click', handleClick);
+      document.body.removeEventListener('mousedown', handleClick);
+      // document.removeEventListener('touchstart', handleClick);
     };
   }, [ref, callback]);
 };
