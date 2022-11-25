@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import DarkModeToggle from '../components/DarkModeToggle';
 import Main from '../components/Main';
@@ -14,10 +15,11 @@ const HomeContainer = styled.div`
 
 export default function Home() {
   return (
-    <HomeContainer>
-      <Navigation />
-      <DarkModeToggle />
-      <Main />
-    </HomeContainer>
+    // <HomeContainer>
+    //   <Navigation />
+    //   <DarkModeToggle />
+    // <Outlet />
+    <Main />
+    // </HomeContainer>
   );
 }
