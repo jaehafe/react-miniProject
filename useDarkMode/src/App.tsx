@@ -2,8 +2,10 @@ import React, { createContext } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GlobalStyle } from './global-styles';
 import { useDarkMode } from './hooks/useDarkMode';
+import Login from './pages/Login';
 import Home from './pages/Home';
 import { darkTheme, lightTheme, Theme } from './theme';
+import RootLayout from './pages/RootLayout';
 
 interface ContextProps {
   theme: Theme;
@@ -20,7 +22,17 @@ export const ThemeContext = createContext<ContextProps>({
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+    ],
   },
 ]);
 

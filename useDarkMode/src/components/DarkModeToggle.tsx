@@ -7,7 +7,7 @@ interface ToggleProps {
   theme: Theme;
 }
 
-const ToggleButton = styled('button')<ToggleProps>`
+const ToggleButton = styled.button<ToggleProps>`
   position: fixed;
   width: 115px;
   height: 45px;

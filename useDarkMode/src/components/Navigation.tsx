@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import DarkModeToggle from './DarkModeToggle';
 import { ThemeContext } from '../App';
 import { lightTheme, Theme } from '../theme';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface NavProps {
   navBar: string;
 }
 
-const NavContainer = styled('nav')<NavProps>`
+const NavContainer = styled.nav<NavProps>`
   width: 100%;
   height: 63px;
   display: flex;
@@ -32,7 +33,7 @@ interface ColorProps {
   color: string;
 }
 
-const TitleContainer = styled('header')<ColorProps>`
+const TitleContainer = styled.header<ColorProps>`
   height: 100%;
   font-size: 2rem;
   font-weight: 900;
@@ -56,7 +57,7 @@ interface ThemeProps {
   theme: Theme;
 }
 
-const LoginButton = styled('button')<ThemeProps>`
+const LoginButton = styled.button<ThemeProps>`
   width: 90px;
   height: 40px;
   border-radius: 30px;
@@ -71,7 +72,7 @@ const LoginButton = styled('button')<ThemeProps>`
   }
 `;
 
-const RegisterButton = styled('button')<ThemeProps>`
+const RegisterButton = styled.button<ThemeProps>`
   width: 90px;
   height: 40px;
   border-radius: 30px;
@@ -88,13 +89,18 @@ const RegisterButton = styled('button')<ThemeProps>`
 
 export default function Navigation() {
   const { theme } = useContext(ThemeContext);
+
   return (
     <NavContainer navBar={theme.navBar}>
       <NavContentContainer>
-        <TitleContainer color={theme.mainColor}>React</TitleContainer>
+        <Link to="/">
+          <TitleContainer color={theme.mainColor}>React</TitleContainer>
+        </Link>
         <DarkModeToggle />
         <InfoContainer>
-          <LoginButton theme={theme}>로그인</LoginButton>
+          <Link to="/login">
+            <LoginButton theme={theme}>로그인</LoginButton>
+          </Link>
           <RegisterButton theme={theme}>회원가입</RegisterButton>
         </InfoContainer>
       </NavContentContainer>
