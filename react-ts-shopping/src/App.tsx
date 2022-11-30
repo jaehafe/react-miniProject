@@ -28,8 +28,8 @@ const getProducts = async (): Promise<CartItemType[]> => {
   return data;
 };
 
-const App: React.FC = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+const App = () => {
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
 
   const {
