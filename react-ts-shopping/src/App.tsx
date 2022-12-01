@@ -10,6 +10,7 @@ import Badge from '@material-ui/core/Badge';
 import { Wrapper, StyledButton } from './App.styles';
 import Item from './Item/Item';
 import Cart from './Cart/Cart';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Types
 export type CartItemType = {
@@ -30,7 +31,10 @@ const getProducts = async (): Promise<CartItemType[]> => {
 
 const App = () => {
   const [cartOpen, setCartOpen] = useState<boolean>(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
+  const [cartItems, setCartItems] = useLocalStorage(
+    'shopping-cart',
+    [] as CartItemType[]
+  );
 
   const {
     data: items,
